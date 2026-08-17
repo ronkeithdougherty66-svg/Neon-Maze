@@ -3,7 +3,7 @@
 // it's been opened at least once. Bump CACHE_NAME any time you change
 // index.html (or any cached asset) and redeploy, so returning players
 // pick up the new version instead of a stale cached copy.
-const CACHE_NAME = 'neon-maze-v1';
+const CACHE_NAME = 'neon-maze-v2';
 const ASSETS = [
   './',
   './index.html',
