@@ -276,19 +276,25 @@
       r: PLAYER_SPAWN.r, c: PLAYER_SPAWN.c,
       px: PLAYER_SPAWN.c, py: PLAYER_SPAWN.r,
       dir: 'none', nextDir: 'none',
-      speed: 6.0,
+      speed: 4.4,
       mouth: 0, mouthDir: 1,
       alive: true
     };
   }
 
   const ENEMY_COLORS = ['#ff2e6d', '#8c6bff', '#37e7ff'];
+  function enemyBaseSpeed(){
+    // Starts slow on the early levels and ramps up gradually so later
+    // levels stay challenging, capped well below the old pace's ceiling.
+    return Math.min(3.2 + (level-1)*0.18, 4.4);
+  }
   function makeEnemies(){
+    const base = enemyBaseSpeed();
     return ENEMY_SPAWNS.map((s, i) => ({
       id: i,
       r: s.r, c: s.c, px: s.c, py: s.r,
       dir: 'left', color: ENEMY_COLORS[i],
-      speed: 4.6 + i*0.15,
+      speed: base + i*0.12,
       mode: 'house',
       modeTimer: 1.0 + i*0.8,
       frightTimer: 0,
